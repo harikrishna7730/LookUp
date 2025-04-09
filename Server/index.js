@@ -13,7 +13,7 @@ const dotenv= require('dotenv');
 dotenv.config();
 app.use(express.json());
 app.use(cors({
-  origin: 'https://frontend-seven-alpha-92.vercel.app/', 
+  origin: 'https://look-up-ashen.vercel.app', 
   methods: ['GET', 'POST'],
   credentials: true,
 }));
@@ -56,7 +56,7 @@ app.post("/upload", upload.single("product"), (req, res) => {
   res.json({
     success: 1,
     // image_url: `http://localhost:${port}/images/${req.file.filename}`
-    image_url: `https://backend-als1.onrender.com/images/${req.file.filename}`
+    image_url: `https://lookup-cn6m.onrender.com/images/${req.file.filename}`
   });
 });
 
