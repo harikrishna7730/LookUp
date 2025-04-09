@@ -10,19 +10,19 @@ const ProductDisplay = (props) => {
     <div className='productdisplay'>
        <div className="productdisplay-left">
           <div className="productdisplay-img-list">
+            {/* <img src={product?.image} alt=''/> 
             <img src={product?.image} alt=''/> 
             <img src={product?.image} alt=''/> 
-            <img src={product?.image} alt=''/> 
-            <img src={product?.image} alt=''/> 
+            <img src={product?.image} alt=''/>  */}
             {/* <img src={product?.image} alt=''/> */}
-            {/* <img src={`https://backend-als1.onrender.com/images/${product?.image}`}  alt=''/>
-            <img src={`https://backend-als1.onrender.com/images/${product?.image}`}  alt=''/>
-            <img src={`https://backend-als1.onrender.com/images/${product?.image}`}  alt=''/>            
-            <img src={`https://backend-als1.onrender.com/images/${product?.image}`}  alt=''/> */}
+            <img src={`https://lookup-cn6m.onrender.com/images/${product?.image}`}  alt=''/>
+            <img src={`https://lookup-cn6m.onrender.com/images/${product?.image}`}  alt=''/>
+            <img src={`https://lookup-cn6m.onrender.com/images/${product?.image}`}  alt=''/>            
+            <img src={`https://lookup-cn6m.onrender.com/images/${product?.image}`}  alt=''/>
           </div>
        <div className="productdisplay-img">
-           {/* <img className='productdisplay-main-img' src={`https://backend-als1.onrender.com/images/${product?.image}`} alt="" /> */}
-           <img src={product?.image} alt=''/>
+           <img className='productdisplay-main-img' src={`https://lookup-cn6m.onrender.com/images/${product?.image}`} alt="" />
+           {/* <img src={product?.image} alt=''/> */}
        </div>
        </div>
        <div className="productdisplay-right">
