@@ -21,7 +21,7 @@ app.use(express.json());
 const allowedOrigins = [
   'https://look-up-ashen.vercel.app',
   'https://look-up-admin-cyan.vercel.app',
-  'http://localhost:3000' // optional: keep if you use local dev
+  'http://localhost:3100' // optional: keep if you use local dev
 ];
 
 app.use(cors({
