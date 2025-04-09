@@ -43,7 +43,7 @@ const LoginSignup = () => {
       method: "POST",
       headers: {
         Accept: "application/form-data",
-        "content-type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
     })
