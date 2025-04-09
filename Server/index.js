@@ -12,11 +12,31 @@ const { log } = require("console");
 const dotenv= require('dotenv');
 dotenv.config();
 app.use(express.json());
+// app.use(cors({
+//   origin: 'https://look-up-ashen.vercel.app', 
+//   methods: ['GET', 'POST'],
+//   credentials: true,
+// }));
+
+const allowedOrigins = [
+  'https://look-up-ashen.vercel.app',
+  'https://look-up-admin-cyan.vercel.app',
+  'http://localhost:3000' // optional: keep if you use local dev
+];
+
 app.use(cors({
-  origin: 'https://look-up-ashen.vercel.app', 
+  origin: function (origin, callback) {
+    // allow requests with no origin (like curl or mobile apps)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST'],
   credentials: true,
 }));
+
 
 // Ensure the upload directory exists
 const uploadDir = "./upload/images";
