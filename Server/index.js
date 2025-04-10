@@ -21,7 +21,7 @@ app.use(express.json());
 const allowedOrigins = [
   'https://look-up-ashen.vercel.app',
   'https://look-up-admin-cyan.vercel.app',
-  'http://localhost:3100' // optional: keep if you use local dev
+  'https://lookup-cn6m.onrender.com' // optional: keep if you use local dev
 ];
 
 app.use(cors({
@@ -76,7 +76,7 @@ app.post("/upload", upload.single("product"), (req, res) => {
   res.json({
     success: 1,
     // image_url: `http://localhost:${port}/images/${req.file.filename}`
-    image_url: `http://localhost:3100/images/${req.file.filename}`
+    image_url: `https://lookup-cn6m.onrender.com/images/${req.file.filename}`
   });
 });
 
