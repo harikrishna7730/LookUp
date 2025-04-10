@@ -106,10 +106,10 @@ const Product = mongoose.model("product",{
     type:Number,
     required:true,
   },
-  date:{
-    type:Date,
-    default:Date.now,
-  },
+  // date:{
+  //   type:Date,
+  //   default:Date.now,
+  // },
   available:{
     type:Boolean,
     default:true,
