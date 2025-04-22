@@ -3,8 +3,9 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 const  Product = require("../Models/models")
 const Users = require("../Models/models")
-const { fetchUser, upload } = require("../Middlewares/middlewares");
-
+const {fetchUser} = require("../Middlewares/middlewares");
+const multer = require('multer');
+const cloudinary = require('../config/cloudinary');
 // Signup endpoint
 router.post('/signup', async (req, res) => {
   let check = await Users.findOne({ email: req.body.email });
@@ -118,14 +119,58 @@ router.post('/getcart', fetchUser, async (req, res) => {
 });
 
 // Single image upload
-router.post("/upload", upload.single("image"), (req, res) => {
-  if (!req.file) {
-    return res.status(400).json({ success: false, message: "No file uploaded" });
-  }
+// router.post("/upload", upload.single("image"), (req, res) => {
+//   if (!req.file) {
+//     return res.status(400).json({ success: false, message: "No file uploaded" });
+//   }
 
-  const imageUrl = `${req.protocol}://${req.get("host")}/Upload/images/${req.file.filename}`;
-  res.status(200).json({ success: true, image_url: imageUrl });
+//   const imageUrl = `${req.protocol}://${req.get("host")}/Upload/images/${req.file.filename}`;
+//   res.status(200).json({ success: true, image_url: imageUrl });
+// });
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
+
+router.post('/add-product', upload.single('image'), async (req, res) => {
+  try {
+    const { name, category, new_price, old_price } = req.body;
+
+    if (!req.file) {
+      return res.status(400).json({ message: 'Image file is required' });
+    }
+
+    // Upload image to Cloudinary
+    const stream = cloudinary.uploader.upload_stream(
+      { folder: 'products' },
+      async (error, result) => {
+        if (error) {
+          return res.status(500).json({ error: error.message });
+        }
+
+        // Save product with imageUrl to MongoDB
+        const newProduct = new Product({
+          name,
+          category,
+          new_price,
+          old_price,
+          image: result.secure_url,
+        });
+
+        await newProduct.save();
+
+        res.json({
+          message: 'Product added successfully!',
+          product: newProduct,
+        });
+      }
+    );
+
+    stream.end(req.file.buffer);
+
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
+
 
 console.log(Product, Users ,"not getting ");
 
