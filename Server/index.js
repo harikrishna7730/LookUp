@@ -3,19 +3,27 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const apiRoutes = require("./Routes/apis");
 const connectDB = require("./db");
+const path = require("path");
 
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:3000",
+  credentials: true
+}));
+
 app.use(express.json());
-app.use("/Upload", express.static("Upload"));
+
+// Serve static files (uploaded images)
+app.use("/Upload/images", express.static(path.join(__dirname, "Upload/images")));
+
 
 connectDB();
 
 // Use API routes
-app.use("/api", apiRoutes);
+app.use("/", apiRoutes);
 
-app.listen(5000, () => {
-  console.log("Server started on port 5000");
+app.listen(process.env.PORT, () => {
+  console.log("Server started on port 3100");
 });
