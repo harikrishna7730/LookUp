@@ -8,10 +8,18 @@ const path = require("path");
 dotenv.config();
 
 const app = express();
+const allowedOrigins = [
+  "http://localhost:3000", 
+  "https://look-up-ashen.vercel.app",             
+  "https://lookup-cn6m.onrender.com" ,
+  "https://look-up-admin-cyan.vercel.app"
+];
+
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: allowedOrigins,
   credentials: true
 }));
+
 
 app.use(express.json());
 
