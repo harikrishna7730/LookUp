@@ -9,10 +9,9 @@ dotenv.config();
 
 const app = express();
 const allowedOrigins = [
-  "http://localhost:3000", 
-  "https://look-up-ashen.vercel.app",             
-  "https://lookup-cn6m.onrender.com" ,
-  "https://look-up-admin-cyan.vercel.app"
+  "https://look-up-ashen.vercel.app",              // deployed frontend
+  "https://lookup-cn6m.onrender.com",              // deployed backend (if needed)
+  "https://look-up-admin-cyan.vercel.app" 
 ];
 
 app.use(cors({
