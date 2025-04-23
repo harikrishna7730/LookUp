@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
-const  Product = require("../Models/models")
-const Users = require("../Models/models")
+const  {Product ,Users}= require("../Models/models")
+
 const {fetchUser} = require("../Middlewares/middlewares");
 const multer = require('multer');
 const cloudinary = require('../config/cloudinary');
@@ -32,11 +32,11 @@ router.post('/signup', async (req, res) => {
 
 // Add product
 router.post('/addproduct', async (req, res) => {
-  let products = await Product?.find({});
-  let id = products.length > 0 ? products.slice(-1)[0].id + 1 : 1;
-
+  let products = await Product.find({});
+  let generatedId = products.length > 0 ? products[products.length - 1].id + 1 : 1;
+ 
   const product = new Product({
-    id: id,
+    id: generatedId,
     name: req.body.name,
     image: req.body.image,
     category: req.body.category,
@@ -139,7 +139,7 @@ router.post('/add-product', upload.single('image'), async (req, res) => {
         if (error) {
           return res.status(500).json({ error: error.message });
         }
-
+        let generatedId = products.length > 0 ? products[products.length - 1].id + 1 : 1;
         // Save product with imageUrl to MongoDB
         const newProduct = new Product({
           id,

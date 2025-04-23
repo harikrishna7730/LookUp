@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 // Product Schema
 const ProductSchema = new mongoose.Schema({
  id:{
-  type:String,
+  type:Number,
   required:true,
  },
   name: {
@@ -54,11 +54,11 @@ const UserSchema = new mongoose.Schema({
 });
 
 // Export User Model
-const User = mongoose.model("User", UserSchema);
+const Users = mongoose.model("User", UserSchema);
 
-module.exports = User;
+
 
 // Export Product Model
 const Product = mongoose.model("Product", ProductSchema);
 
-module.exports = Product;
+module.exports ={ Product, Users};
