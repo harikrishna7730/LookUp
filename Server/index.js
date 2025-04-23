@@ -26,10 +26,8 @@ app.use(cors({
 }));
 
 app.use(express.json());
-
 // Serve static files (uploaded images)
 app.use("/Upload/images", express.static(path.join(__dirname, "Upload/images")));
-
 
 connectDB();
 

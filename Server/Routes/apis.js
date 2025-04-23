@@ -118,21 +118,15 @@ router.post('/getcart', fetchUser, async (req, res) => {
   res.json(userData.cartData);
 });
 
-// Single image upload
-// router.post("/upload", upload.single("image"), (req, res) => {
-//   if (!req.file) {
-//     return res.status(400).json({ success: false, message: "No file uploaded" });
-//   }
-
-//   const imageUrl = `${req.protocol}://${req.get("host")}/Upload/images/${req.file.filename}`;
-//   res.status(200).json({ success: true, image_url: imageUrl });
-// });
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
 router.post('/add-product', upload.single('image'), async (req, res) => {
+  console.log(req.file);  // your uploaded file info
+  console.log(req.body);  // your productName & price
+  res.send("Product received");
   try {
-    const { name, category, new_price, old_price } = req.body;
+    const {id, name, category, new_price, old_price } = req.body;
 
     if (!req.file) {
       return res.status(400).json({ message: 'Image file is required' });
@@ -148,6 +142,7 @@ router.post('/add-product', upload.single('image'), async (req, res) => {
 
         // Save product with imageUrl to MongoDB
         const newProduct = new Product({
+          id,
           name,
           category,
           new_price,
@@ -171,7 +166,5 @@ router.post('/add-product', upload.single('image'), async (req, res) => {
   }
 });
 
-
-console.log(Product, Users ,"not getting ");
 
 module.exports = router;
