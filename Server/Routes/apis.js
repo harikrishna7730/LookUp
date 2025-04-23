@@ -32,9 +32,11 @@ router.post('/signup', async (req, res) => {
 
 // Add product
 router.post('/addproduct', async (req, res) => {
-  let products = await Product.find({});
-  let generatedId = products.length > 0 ? products[products.length - 1].id + 1 : 1;
- 
+  // let products = await Product.find({});
+  // let generatedId = products.length > 0 ? products[products.length - 1].id + 1 : 1;
+  const latestProduct = await Product.findOne().sort({ id: -1 });
+  const generatedId = latestProduct ? latestProduct.id + 1 : 1;
+  
   const product = new Product({
     id: generatedId,
     name: req.body.name,
@@ -124,9 +126,8 @@ const upload = multer({ storage });
 router.post('/add-product', upload.single('image'), async (req, res) => {
   console.log(req.file);  // your uploaded file info
   console.log(req.body);  // your productName & price
-  res.send("Product received");
   try {
-    const {id, name, category, new_price, old_price } = req.body;
+    const { name, category, new_price, old_price } = req.body;
 
     if (!req.file) {
       return res.status(400).json({ message: 'Image file is required' });
@@ -139,10 +140,12 @@ router.post('/add-product', upload.single('image'), async (req, res) => {
         if (error) {
           return res.status(500).json({ error: error.message });
         }
-        let generatedId = products.length > 0 ? products[products.length - 1].id + 1 : 1;
+        const latestProduct = await Product.findOne().sort({ id: -1 });
+        const generatedId = latestProduct ? latestProduct.id + 1 : 1;
+        
         // Save product with imageUrl to MongoDB
         const newProduct = new Product({
-          id,
+          id:generatedId,
           name,
           category,
           new_price,
