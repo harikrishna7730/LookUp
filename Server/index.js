@@ -11,7 +11,7 @@ const app = express();
 const allowedOrigins = [
   'http://localhost:3000',
   "https://look-up-ashen.vercel.app",              // deployed frontend
-  "https://lookup-cn6m.onrender.com",              // deployed backend (if needed)
+  "http://localhost:3100",              // deployed backend (if needed)
   "https://look-up-admin-cyan.vercel.app" 
 ];
 

@@ -9,9 +9,14 @@ function Navbar() {
   const{getTotalCartItems}=useContext(ShopContext)
 
   return (
-    <div className='navbar'>
+    <nav className='navbar'>
         <div className='nav-logo'>
           <Link to={'/'}><img src={logo} alt='logo' width={200}/></Link>
+        </div>
+        <div className='menu'>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
         <div >
           <ul  className='list-items'>
@@ -29,7 +34,7 @@ function Navbar() {
           <Link to="/cart"><img src={cartIcon} alt='carticon' width={40}/></Link>
           <div className='nav-cart-count'>{getTotalCartItems()}</div>
         </div>
-    </div>
+    </nav>
   )
 }
 
