@@ -1,7 +1,7 @@
 import React from 'react'
 import "./Offers.css"
-import exclusive_img from "../assets/ex-img4.png"
-
+// import exclusive_img from "../assets/ex-img4.png"
+import logo from "../assets/Main-logo.png"
 const Offers = () => {
   return (
     <div className='offers'>
@@ -12,7 +12,7 @@ const Offers = () => {
         <button>Check Now</button>
       </div>
       <div className="offers-right">
-       <img src={exclusive_img} alt='ex-img' height={480}/>
+       <img src={logo} alt='ex-img' height={480}/>
       </div>
     </div>
   )
