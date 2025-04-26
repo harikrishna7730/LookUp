@@ -140,10 +140,25 @@ router.post('/add-product', upload.single('image'), async (req, res) => {
         if (error) {
           return res.status(500).json({ error: error.message });
         }
-        const latestProduct = await Product.findOne().sort({ id: -1 });
-        const generatedId = latestProduct ? latestProduct.id + 1 : 1;
+        const counterSchema = new mongoose.Schema({
+          _id: String,
+          seq: { type: Number, default: 0 }
+        });
         
+        const Counter = mongoose.model('Counter', counterSchema);
+        
+        // Function to get next id
+        const getNextId = async () => {
+          const counter = await Counter.findByIdAndUpdate(
+            { _id: 'productid' },
+            { $inc: { seq: 1 } },
+            { new: true, upsert: true }
+          );
+          return counter.seq;
+        };
+
         // Save product with imageUrl to MongoDB
+        const generatedId = await getNextId();
         const newProduct = new Product({
           id:generatedId,
           name,
