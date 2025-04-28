@@ -4,7 +4,7 @@ import "./Popular.css"
 const Popular = () => {
   const [popularProducts,setPopularProducts]=useState([])
   useEffect(()=>{
-  fetch('https://lookup-cn6m.onrender.com/popularinwomen')
+  fetch('http://localhost:3100/popularinwomen')
   .then((res)=>res.json())
   .then((data)=>setPopularProducts(data))
   },[])

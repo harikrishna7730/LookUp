@@ -1,21 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import { Suspense,lazy } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Shop from './pages/Shop';
-import ShopCategory from "./pages/ShopCategory"
-import Product from './pages/Product';
-import Cart from './pages/Cart';
-import LoginSignup from './pages/LoginSignup';
-import Navbar from './components/Navbar/Navbar';
-import Footer from './components/Footer/Footer';
 import men_banner from "./components/assets/banner_mens.png"
 import women_banner from "./components/assets/banner_women.png"
 import kids_banner from "./components/assets/banner_kids.png"
-
+const Loader = lazy(()=>import("./components/LoadingSpinner/Loader"))
+const Cart = lazy(()=>import("./pages/Cart"))
+const LoginSignup = lazy(()=>import("./pages/LoginSignup"))
+const Product =lazy(()=>import("./pages/Product"))
+const Navbar =lazy(()=>import("./components/Navbar/Navbar"))
+const Footer = lazy(()=>import("./components/Footer/Footer"))
+const Shop = lazy(()=>import("./pages/Shop"))
+const ShopCategory = lazy(()=>import("./pages/ShopCategory"))
 function App() {
   return (
   <>
-
+  <Suspense fallback={<Loader/>}>
    <BrowserRouter>
    <Navbar/>
     <Routes>
@@ -28,10 +28,10 @@ function App() {
       </Route>
       <Route path="/cart" element={<Cart/>}/>
       <Route path="/login" element={<LoginSignup/>}/>
-
       </Routes> 
       <Footer/>
    </BrowserRouter>
+   </Suspense>
   </>
   );
 }

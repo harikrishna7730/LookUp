@@ -12,7 +12,7 @@ const Hero = () => {
           <div>
             <div className='hero-hand-icon'>
                <p>new</p>
-               <img src={hand_icon} alt='hand-icon'/>
+               <img src={hand_icon} alt='hand-icon' loading="lazy"/>
             </div>
             <p>collections</p>
             <p>for everyone</p>
@@ -20,13 +20,13 @@ const Hero = () => {
           <div className='hero-latest-btn'>
             <a href="#collections latest-button" style={{ textDecoration: 'none', color: 'inherit' }}>
               <span>Latest collection</span>
-              <img src={arrow_icon} alt='arrow-icon' />
+              <img src={arrow_icon} alt='arrow-icon' loading="lazy" />
             </a>
           </div>
 
        </div>
        <div className='hero-right'>
-        <img src={hero_image} alt='' height={550}/>
+        <img src={hero_image} alt='' height={550} loading="lazy"/>
        </div>
     </div>
   )

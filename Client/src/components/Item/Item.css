@@ -23,3 +23,36 @@
     transform: scale(1.05);
     transition: 0.6s;
 }
+
+/* //Skeleton css */
+
+/* Skeleton loader styles */
+.item-skeleton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Skeleton loader for image */
+  .item-skeleton img {
+    background-color: #e0e0e0; /* Light gray color for the skeleton image */
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  /* Skeleton loader for text (name) */
+  .item-skeleton h3 {
+    background-color: #e0e0e0; /* Light gray color for the skeleton text */
+    width: 150px; /* Match the size of the real content */
+    height: 30px;
+    margin-bottom: 10px;
+  }
+  
+  /* Skeleton loader for price */
+  .item-skeleton .price {
+    background-color: #e0e0e0; /* Light gray color for the skeleton price */
+    width: 100px;
+    height: 20px;
+  }
+  
