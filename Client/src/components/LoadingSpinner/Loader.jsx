@@ -9,8 +9,12 @@ const Loader = () => {
   width="100"
   color="#4fa94d"
   ariaLabel="three-circles-loading"
-  wrapperStyle={{display:"flex",justifyContent:"center",alignItems:"center",marginTop:"18rem"}}
-  wrapperClass=""
+  wrapperStyle={{
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)"
+  }}  wrapperClass=""
   />
     </>
   )
