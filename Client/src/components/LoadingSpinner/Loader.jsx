@@ -4,7 +4,7 @@ const Loader = () => {
   return (
     <>
    <div style={{display:"flex",justifyContent:"center",alignItems:"center",fontFamily:"Poppins"}}>
-   <h1> Please Wait Loading....</h1>
+   <div> <h1>Please Wait Loading....</h1></div>
     </div>
     </>
   )
