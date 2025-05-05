@@ -26,7 +26,8 @@ const Hero = () => {
 
        </div>
        <div className='hero-right'>
-        <img src={hero_image} alt='' height={550}/>
+        <img src={hero_image} alt='' height={550}   loading="eager"           // ✅ load early
+  fetchpriority="high"/>
        </div>
     </div>
   )
