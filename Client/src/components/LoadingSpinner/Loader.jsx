@@ -1,13 +1,18 @@
-import React from 'react'
-import "./Loader.css"
+import React from 'react';
+import './Loader.css';
+
 const Loader = () => {
   return (
-    <>
-   <div style={{display:"flex",justifyContent:"center",alignItems:"center",fontFamily:"Poppins"}}>
-   <div> <h1>Please Wait Loading....</h1></div>
+    <div className="loader-container">
+      <div className="spinner">
+        <div className="dot dot1"></div>
+        <div className="dot dot2"></div>
+        <div className="dot dot3"></div>
+        <div className="dot dot4"></div>
+      </div>
+      <p className="loading-text">Please wait, Loading...</p>
     </div>
-    </>
-  )
-}
+  );
+};
 
-export default Loader
+export default Loader;
