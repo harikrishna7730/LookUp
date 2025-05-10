@@ -117,6 +117,7 @@ router.post('/removefromcart', fetchUser, async (req, res) => {
 // Get cart data
 router.post('/getcart', fetchUser, async (req, res) => {
   let userData = await Users.findOne({ _id: req.user.id });
+  console.log("User Data:", userData);
   res.json(userData.cartData);
 });
 

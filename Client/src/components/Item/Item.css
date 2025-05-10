@@ -24,6 +24,10 @@
     transition: 0.6s;
 }
 
+.item-link{
+  text-decoration: none;
+  color: black;
+}
 /* //Skeleton css */
 
 /* Skeleton loader styles */

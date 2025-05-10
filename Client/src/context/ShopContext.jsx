@@ -12,11 +12,11 @@ const getDefaultCart = () => {
 const ShopContextProvider = (props) => {
   const [all_product, setAll_Product] = useState([]);
   useEffect(() => {
-    fetch("https://lookup-cn6m.onrender.com/allproducts")
+    fetch("http://localhost:3100/allproducts")
       .then((response) => response.json())
       .then((data) => setAll_Product(data));
     if (localStorage.getItem("auth-token")) {
-      fetch("https://lookup-cn6m.onrender.com/getcart", {
+      fetch("http://localhost:3100/getcart", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -35,7 +35,7 @@ const ShopContextProvider = (props) => {
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
     if (localStorage.getItem("auth-token")) {
-      fetch("https://lookup-cn6m.onrender.com/addtocart", {
+      fetch("http://localhost:3100/addtocart", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -52,7 +52,7 @@ const ShopContextProvider = (props) => {
   const removeFromCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
     if (localStorage.getItem("auth-token")) {
-      fetch("https://lookup-cn6m.onrender.com/removefromcart", {
+      fetch("http://localhost:3100/removefromcart", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -67,18 +67,23 @@ const ShopContextProvider = (props) => {
   };
 
   const getTotalCartAmount = () => {
-    let totalAmount = 0;
-    for (const item in cartItems) {
-      if (cartItems[item] > 0) {
-        let itemInfo = all_product.find(
-          (product) => product.id === parseInt(item)
-        );
+  let totalAmount = 0;
+  for (const item in cartItems) {
+    if (cartItems[item] > 0) {
+      let itemInfo = all_product.find(
+        (product) => product.id === parseInt(item)
+      );
+      if (itemInfo) {
         totalAmount += itemInfo.new_price * cartItems[item];
+      } else {
+        console.warn(`Product not found for ID: ${item}`);
       }
     }
-    return totalAmount;
-  };
-  // console.log("alkjdlkfj",typeof totalAmount)
+  }
+  return totalAmount;
+};
+
+
 
   const getTotalCartItems = () => {
     let totalItem = 0;

@@ -7,7 +7,6 @@ import { ShopContext } from '../../context/ShopContext'
 function Navbar() {
   const [menu,setmenu]=useState("shop")
   const{getTotalCartItems}=useContext(ShopContext)
-
   return (
     <nav className='navbar'>
         <div className='nav-logo'>

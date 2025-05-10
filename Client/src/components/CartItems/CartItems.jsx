@@ -18,8 +18,9 @@ const CartItems = () => {
       </div>
       <hr />
 
-      {all_product.map((e) => {
+      {all_product?.map((e) => {
         const quantity = cartItems?.[e.id] || 0; // Ensure it’s at least 0
+        console.log(cartItems)
         if (quantity > 0) {
           return (
             <div key={e.id}>

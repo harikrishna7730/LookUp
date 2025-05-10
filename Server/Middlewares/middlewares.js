@@ -20,7 +20,6 @@ const Storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: Storage });
-
 // Middleware to fetch user via JWT
 const fetchUser = async (req, res, next) => {
   const token = req.header("auth-token");
