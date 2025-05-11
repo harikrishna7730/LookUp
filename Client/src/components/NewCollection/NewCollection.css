@@ -23,3 +23,23 @@
     gap: 30px;
 }
 
+@media (max-width: 600px) {
+  .new-collections h1 {
+    font-size: 28px;
+    text-align: center; /* Centers the title */
+  }
+
+  .new-collections hr {
+    width: 120px;
+    height: 4px;
+  }
+
+  .collections-items {
+    display: grid;  /* Changes to grid layout */
+    grid-template-columns: 1fr 1fr;  /* Two products per row */
+    gap: 20px; /* Space between products */
+    padding: 0 15px; /* Optional: Adds some padding */
+  }
+}
+
+

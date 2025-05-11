@@ -8,3 +8,14 @@
     margin: 60px 170px;
     text-transform: capitalize;
 }
+@media (max-width: 600px) {
+  .breadcrum {
+    margin: 20px 10px; /* Adjust the margins for smaller screens */
+    font-size: 14px; /* Reduce font size for better fit on smaller screens */
+  }
+
+  .breadcrum img {
+    width: 12px; /* Reduce the size of the arrows */
+    height: auto; /* Maintain aspect ratio */
+  }
+}

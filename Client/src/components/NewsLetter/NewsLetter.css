@@ -49,3 +49,40 @@
     font-size: 16px;
     cursor: pointer;
 }
+
+@media (max-width: 600px) {
+  .newsletter {
+    width: 90%;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    gap: 20px;
+  }
+
+  .newsletter h1 {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .newsletter p {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .newsletter div {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    border-radius: 20px;
+    gap: 10px;
+  }
+
+  .newsletter input {
+    width: 100%;
+    margin-left: 0;
+   font-size: 14px;
+    border-radius: 30px;
+  }
+}

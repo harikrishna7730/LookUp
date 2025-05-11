@@ -59,4 +59,45 @@
     width: 100px;
     height: 20px;
   }
-  
+  @media (max-width: 600px) {
+  .item {
+    width: 48%; /* Two items per row with a small gap */
+    margin-bottom: 20px;
+  }
+
+  .item-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .item p {
+    display: none; /* Hide the item name */
+  }
+
+  .item-prices {
+    justify-content: space-between;
+    padding: 0 5px;
+  }
+
+  .item-price-new,
+  .item-price-old {
+    font-size: 16px;
+  }
+
+  .item-skeleton {
+    width: 100%;
+  }
+
+  .item-skeleton > span {
+    width: 100% !important;
+    height: auto !important;
+  }
+   .item {
+    width: 100%; /* full width inside grid column */
+  }
+
+  .item p {
+    display: none;
+  }
+}

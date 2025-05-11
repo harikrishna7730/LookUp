@@ -42,3 +42,41 @@
     justify-content: flex-end;
     padding-top: 50px;
 }
+
+@media (max-width: 600px) {
+  .offers {
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+    padding: 30px 20px;
+    margin-bottom: 80px;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .offers-left h1 {
+    font-size: 36px;
+  }
+
+  .offers-left p {
+    font-size: 16px;
+  }
+
+  .offers-left button {
+    width: 200px;
+    height: 50px;
+    font-size: 18px;
+    margin: 20px auto 0;
+  }
+
+  .offers-right {
+    justify-content: center;
+    padding-top: 0;
+  }
+
+  .offers-right img {
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
+  }
+}

@@ -28,3 +28,35 @@ color: #555;
     padding: 48px;
     padding-bottom: 70px;
 }
+
+@media (max-width: 600px) {
+  .descriptionbox {
+    margin: 20px 10px; /* Adjust the margin for smaller screens */
+  }
+
+  .descriptionbox-navigator {
+    flex-direction: column; /* Stack navigator items vertically */
+  }
+
+  .descriptionbox-nav-box {
+    width: 100%; /* Make each nav box take full width */
+    text-align: center; /* Center the text for better readability */
+    font-size: 14px; /* Adjust font size */
+    padding: 10px 0; /* Add some padding for better spacing */
+  }
+
+  .descriptionbox-nav-box.fade {
+    background-color: #fbfbfb;
+    color: #555;
+  }
+
+  .descriptionbox-description {
+    padding: 20px; /* Adjust padding to fit smaller screens */
+    padding-bottom: 40px; /* Adjust bottom padding */
+    border: none; /* Remove border for a cleaner look */
+  }
+
+  .descriptionbox-description p {
+    font-size: 14px; /* Adjust font size for better readability on small screens */
+  }
+}
