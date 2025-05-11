@@ -60,3 +60,38 @@ padding-bottom: 100px;
     font-weight:500;
     font-size: 18px;
 }
+@media (max-width: 600px) {
+  .loginsignup {
+    padding: 10px 0 50px;
+    height: auto;
+  }
+
+  .loginsignup-container {
+    width: 90%;
+    height: auto;
+    padding: 20px;
+  }
+
+  .loginsignup-fields input {
+    height: 50px;
+    font-size: 16px;
+  }
+
+  .loginsignup-container button {
+    width: 100%;
+    height: 56px;
+    font-size: 20px;
+  }
+
+  .loginsignup-agree {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 16px;
+  }
+
+  .loginsignup-login {
+    font-size: 16px;
+    text-align: center;
+  }
+}
