@@ -85,13 +85,27 @@
     font-size: 16px;
   }
 
-  .item-skeleton {
-    width: 100%;
+ .item-skeleton {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
-  .item-skeleton > span {
-    width: 100% !important;
+  .item-skeleton > span:nth-child(1) {
+    width: 30% !important;
     height: auto !important;
+    aspect-ratio: 3 / 2; /* Matches responsive image shape */
+    border-radius: 10px;
+  }
+
+  .item-skeleton > span:nth-child(2) {
+    display: none; /* Hides title skeleton, since item name is hidden */
+  }
+
+  .item-skeleton > span:nth-child(3) {
+    width: 30% !important;
+    height: 10px !important; /* Matches item price height */
   }
    .item {
     width: 100%; /* full width inside grid column */
