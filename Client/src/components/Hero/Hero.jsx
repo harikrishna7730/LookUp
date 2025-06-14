@@ -32,7 +32,7 @@ const Hero = () => {
           src={hero_image}
           alt=""
           height={550}
-          width={auto}
+          
           loading="eager" // ✅ load early
           fetchpriority="high"
         />

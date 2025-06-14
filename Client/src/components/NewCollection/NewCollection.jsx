@@ -7,7 +7,7 @@ const NewCollection = () => {
   const [new_collection, setNew_collection] = useState([]);
 
   useEffect(() => {
-    axios.get('https://lookup-cn6m.onrender.com/newcollections')
+    axios.get('http://localhost:3100/newcollections')
       .then((response) => {
         setNew_collection(response.data);
       })
