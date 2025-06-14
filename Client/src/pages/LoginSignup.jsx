@@ -13,7 +13,7 @@ const LoginSignup = () => {
 
   const login = async () => {
     try {
-      const response = await fetch('http://localhost:3100/login', {
+      const response = await fetch('https://lookup-cn6m.onrender.com/login', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -39,7 +39,7 @@ const LoginSignup = () => {
   const signup = async () => {
     console.log("Sign Up Function Executed", formData);
     let responseData;
-    await fetch("http://localhost:3100/signup", {
+    await fetch("https://lookup-cn6m.onrender.com/signup", {
       method: "POST",
       headers: {
         Accept: "application/form-data",
