@@ -2,9 +2,12 @@ const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 const  {Product ,Users}= require("../Models/models")
-
+const Razorpay = require("razorpay");
 const {fetchUser} = require("../Middlewares/middlewares");
 const multer = require('multer');
+const dontenv=require("dotenv")
+const crypto = require("crypto");
+require('dotenv').config();
 const cloudinary = require('../config/cloudinary');
 // Signup endpoint
 router.post('/signup', async (req, res) => {
@@ -117,7 +120,6 @@ router.post('/removefromcart', fetchUser, async (req, res) => {
 // Get cart data
 router.post('/getcart', fetchUser, async (req, res) => {
   let userData = await Users.findOne({ _id: req.user.id });
-  console.log("User Data:", userData);
   res.json(userData.cartData);
 });
 
@@ -182,6 +184,48 @@ router.post('/add-product', upload.single('image'), async (req, res) => {
 
   } catch (error) {
     res.status(500).json({ error: error.message });
+  }
+});
+
+
+
+const instance = new Razorpay({
+ key_id: process.env.RAZORPAY_KEY_ID,
+  key_secret: process.env.RAZORPAY_KEY_SECRET,
+});
+
+router.post("/create-order", async (req, res) => {
+  const options = {
+    // amount: req.body.amount, // in paise
+    amount:1,
+    currency: "INR",
+    receipt: "receipt#1",
+  };
+  try {
+    const order = await instance.orders.create(options);
+    res.json(order);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+  // console.log("Razorpay initialized:", razorpay);
+// Verify payment
+router.post("/verify-payment", (req, res) => {
+  const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
+
+
+  const body = razorpay_order_id + "|" + razorpay_payment_id;
+  const expectedSignature = crypto
+    .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET) // same secret as above
+    .update(body)
+    .digest("hex");
+
+  if (expectedSignature === razorpay_signature) {
+    // ✅ Payment is verified
+    return res.status(200).json({ success: true, message: "Payment verified successfully" });
+  } else {
+    // ❌ Possible fraud
+    return res.status(400).json({ success: false, message: "Payment verification failed" });
   }
 });
 

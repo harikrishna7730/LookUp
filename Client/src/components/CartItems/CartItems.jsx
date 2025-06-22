@@ -4,6 +4,7 @@ import remove_icon from "../assets/cart_cross_icon.png";
 import { ShopContext } from '../../context/ShopContext';
 const CartItems = () => {
   const { getTotalCartAmount, all_product, cartItems, removeFromCart } = useContext(ShopContext);
+
   const loadRazorpayScript = () => {
   return new Promise((resolve) => {
     const script = document.createElement("script");
@@ -25,7 +26,7 @@ const handleCheckout = async () => {
   const totalAmount = getTotalCartAmount() * 100; // in paise for Razorpay
 
   const options = {
-    key: "rzp_test_opFPKh09ZdKA4U", // Replace with your Razorpay Test/Live Key
+    key: "rzp_live_j3nphE20WoDMuJ", // Replace with your Razorpay Test/Live Key
     amount: totalAmount.toString(),
     currency: "INR",
     name: "Your Shop Name",
